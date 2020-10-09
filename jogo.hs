@@ -1,14 +1,16 @@
-module Jogo where
+module Main where
 import Dados
 import Grafica
+import Graphics.Gloss
 
---definir a função que parte a lista(tabuleiro ) em duas e remove uma peça
+
+-- breaks the board in to lists and removes one piece
 removePiece:: [a] -> Int -> ([a],[a])
 removePiece lst n = (left,right)
                   where (left,ys) = splitAt (n - 1) lst
                         right = drop 1 ys
   
--- coloca a peça no tabuleiro
+-- adds a piece to the board 
 addPiece:: [a] -> a -> Int -> [a]
 addPiece tab p index = left ++ [p] ++ right
                      where (left,right) = removePiece tab index
@@ -40,12 +42,12 @@ checkWin tab = (a == b && b == c) || (a1 == b1 && b1 == c1) || (a2 == b2 && b2 =
                (a == a1 && a1 == a2) || (b == b1 && b1 == b2) || (c == c1 && c1 == c2)
           where (a:a1:[a2], b:b1:[b2], c:c1:[c2]) = makeLines tab 
 
---
+-- switchs de current player 
 switchPlayer :: Char -> Char
 switchPlayer c | c == 'O' = 'X'
                | c == 'X' = 'O'
 
--- funçao para rodar o jogo
+-- runs the game (auxiliar main)
 runTicTacToe :: [CASA] -> Char -> IO()
 runTicTacToe tab c = do  
                        putStrLn  (showTab tab)
@@ -59,5 +61,7 @@ runTicTacToe tab c = do
 
 
 main :: IO()
-main = runTicTacToe tab 'X'
-      where tab = [Vazio 1, Vazio 2, Vazio 3, Vazio 4, Vazio 5, Vazio 6, Vazio 7, Vazio 8, Vazio 9] 
+main = do
+       display window c1 piece    
+       runTicTacToe tab 'X'
+       where tab = [Vazio 1, Vazio 2, Vazio 3, Vazio 4, Vazio 5, Vazio 6, Vazio 7, Vazio 8, Vazio 9] 

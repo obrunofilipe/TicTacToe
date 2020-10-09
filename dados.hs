@@ -10,7 +10,7 @@ type TAB = [CASA]
 t1::TAB
 t1 = [Vazio 1, Vazio 2, Vazio 3, Vazio 4, Vazio 5 , Vazio 6, Vazio 7, Vazio 8, Vazio 9]
 
--- Definir show para os novos tipos definidos em dados
+-- define an instance of show to the new data type CASA
 instance Show CASA where
     show (Vazio n) = show n
     show (Jogador c) = [c]

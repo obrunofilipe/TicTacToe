@@ -1,7 +1,9 @@
 module Grafica where
 import Dados
-
-
+import Graphics.Gloss
+import Graphics.Gloss.Data.Display
+import Graphics.Gloss.Data.Picture
+import Graphics.Gloss.Data.Color
 
 
 --board to string 
@@ -23,3 +25,17 @@ makeLines :: [a] -> ([a],[a],[a])
 makeLines tab = (line1, line2, line3)
               where (newtab,line3) = splitAt 6 tab
                     (line1,line2)  = splitAt 3 newtab
+
+window :: Display
+window = InWindow "TicTacToe" (800,800) (800,800)
+
+c1 :: Color
+c1 = white 
+
+bk :: Picture
+bk = Blank
+
+piece :: Picture
+piece = color red (Polygon [(0,0),(266.7,0),(266.7,266.7),(0,266.7)])
+
+
