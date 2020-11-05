@@ -2,6 +2,7 @@ module Main where
 import Dados
 import Grafica
 import Graphics.Gloss
+import System.IO
 
 
 -- breaks the board in to lists and removes one piece
@@ -22,7 +23,9 @@ isDigit n = elem n [1..9]
 --check for valid input 
 checkInput:: TAB -> IO Int
 checkInput tab = do 
+                   hSetBuffering stdin NoBuffering
                    input <- getChar
+                   --hFlush stdin
                    if isDigit(read[input]) && checkPlace tab (read[input])
                        then return (read [input])
                        else do 
