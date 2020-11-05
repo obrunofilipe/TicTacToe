@@ -61,7 +61,6 @@ runTicTacToe tab c = do
 
 
 main :: IO()
-main = do
-       display window c1 piece    
+main = do   
        runTicTacToe tab 'X'
        where tab = [Vazio 1, Vazio 2, Vazio 3, Vazio 4, Vazio 5, Vazio 6, Vazio 7, Vazio 8, Vazio 9] 

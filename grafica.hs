@@ -30,7 +30,7 @@ window :: Display
 window = InWindow "TicTacToe" (800,800) (800,800)
 
 c1 :: Color
-c1 = white 
+c1 = black 
 
 bk :: Picture
 bk = Blank
